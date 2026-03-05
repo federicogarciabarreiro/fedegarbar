@@ -3,7 +3,14 @@ function Header({ data, language, onLanguageChange, theme, onThemeToggle }) {
     <header className="header">
       <div className="header-content">
         <div className="header-left">
-          <h1>{data.name}</h1>
+          <div className="header-brand">
+            <img
+              src="/logo512.png"
+              alt="Site logo"
+              className="header-logo"
+            />
+            <h1>{data.name}</h1>
+          </div>
           <p className="header-subtitle">
             {language === 'es' ? data.title_es : data.title_en}
           </p>
