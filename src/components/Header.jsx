@@ -1,32 +1,39 @@
 function Header({ data, language, onLanguageChange }) {
   return (
     <header className="header">
-      <h1>{data.name}</h1>
-      <p>{language === 'es' ? data.title_es : data.title_en}</p>
-      <p>{data.contact}</p>
-      <nav>
-        <a href={data.links.linkedin} target="_blank" rel="noopener noreferrer">
-          LinkedIn
-        </a>{' '}
-        |{' '}
-        <a href={data.cv_download} download>
-          CV
-        </a>
-      </nav>
+      <div className="header-content">
+        <div className="header-left">
+          <h1>{data.name}</h1>
+          <p className="header-subtitle">
+            {language === 'es' ? data.title_es : data.title_en}
+          </p>
+        </div>
 
-      <div className="language-switch">
-        <button 
-          onClick={() => onLanguageChange('es')}
-          className={language === 'es' ? 'active' : ''}
-        >
-          Español
-        </button>
-        <button 
-          onClick={() => onLanguageChange('en')}
-          className={language === 'en' ? 'active' : ''}
-        >
-          English
-        </button>
+        <div className="header-right">
+          <nav className="nav">
+            <a href={data.links.linkedin} target="_blank" rel="noopener noreferrer">
+              LinkedIn
+            </a>
+            <a href={data.cv_download} download>
+              CV
+            </a>
+          </nav>
+
+          <div className="language-switch">
+            <button
+              onClick={() => onLanguageChange('es')}
+              className={language === 'es' ? 'active' : ''}
+            >
+              ES
+            </button>
+            <button
+              onClick={() => onLanguageChange('en')}
+              className={language === 'en' ? 'active' : ''}
+            >
+              EN
+            </button>
+          </div>
+        </div>
       </div>
     </header>
   );
