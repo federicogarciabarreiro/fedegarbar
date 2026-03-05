@@ -121,11 +121,11 @@ export const headerData = {
 };
 
 export const introText = {
-  es: 'Unity Technical Developer con más de 4 años de experiencia desarrollando simuladores interactivos, aplicaciones XR y sistemas 3D en tiempo real. Especializado en C#, arquitectura de software y optimización de rendimiento, con experiencia integrando backend, APIs y servicios de inteligencia artificial en aplicaciones desarrolladas con Unity. He participado en el desarrollo de más de 300 simuladores educativos utilizados en entornos de formación profesional, diseñando sistemas escalables capaces de soportar más de 1000 usuarios simultáneos.',
-  en: 'Unity Technical Developer with more than 4 years of experience developing interactive simulators, XR applications and real-time 3D systems. Specialized in C#, software architecture and performance optimization, with experience integrating backend, APIs and artificial intelligence services in applications developed with Unity. I have participated in the development of more than 300 educational simulators used in professional training environments, designing scalable systems capable of supporting more than 1000 simultaneous users.'
+  es: 'Unity Developer. Simuladores, XR, Backend, Performance.',
+  en: 'Unity Developer. Simulators, XR, Backend, Performance.'
 };
 
 export const footerText = {
-  es: 'Contacto: federicogarciabarreiro@gmail.com',
-  en: 'Contact: federicogarciabarreiro@gmail.com'
+  es: 'federicogarciabarreiro@gmail.com',
+  en: 'federicogarciabarreiro@gmail.com'
 };
