@@ -161,7 +161,7 @@ export const headerData = {
   contact: 'federicogarciabarreiro@gmail.com | +34 667 56 30 26 | Murcia, España',
   links: {
     linkedin: 'https://linkedin.com/in/fedegarbar',
-    github: 'https://github.com/fedegarbar',
+    github: 'https://github.com/federicogarciabarreiro',
     itch: 'https://fedeegb.itch.io'
   },
   actions: [
@@ -176,7 +176,7 @@ export const headerData = {
       id: 'github',
       label: 'GitHub',
       icon: '⌥',
-      href: 'https://github.com/fedegarbar',
+      href: 'https://github.com/federicogarciabarreiro',
       target: '_blank'
     },
     {
