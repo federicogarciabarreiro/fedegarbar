@@ -44,6 +44,30 @@
   }
 }
 
+@keyframes dustFloat {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-18px, -22px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes dustFloatReverse {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(22px, 16px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 .app {
   background: #1a1f25;
   font-family: var(--font-body);
@@ -83,9 +107,96 @@
   z-index: 0;
 }
 
-.app > * {
+.app > *:not(.ambient-particles) {
   position: relative;
+  z-index: 2;
+}
+
+.ambient-particles {
+  position: absolute;
+  inset: 0;
   z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.ambient-particles::before,
+.ambient-particles::after {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background-repeat: repeat;
+  opacity: 0.42;
+  transition: opacity 0.35s ease;
+}
+
+.ambient-particles::before {
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.5) 0 1px, transparent 2px),
+    radial-gradient(circle at 30% 72%, rgba(255, 255, 255, 0.38) 0 1px, transparent 2px),
+    radial-gradient(circle at 67% 22%, rgba(255, 255, 255, 0.42) 0 1px, transparent 2px),
+    radial-gradient(circle at 82% 58%, rgba(255, 255, 255, 0.32) 0 1px, transparent 2px);
+  background-size: 280px 240px;
+  animation: dustFloat 18s linear infinite;
+}
+
+.ambient-particles::after {
+  background-image:
+    radial-gradient(circle at 20% 28%, rgba(180, 200, 255, 0.32) 0 1px, transparent 2px),
+    radial-gradient(circle at 47% 62%, rgba(176, 218, 255, 0.24) 0 1px, transparent 2px),
+    radial-gradient(circle at 78% 36%, rgba(210, 224, 255, 0.28) 0 1px, transparent 2px),
+    radial-gradient(circle at 90% 84%, rgba(180, 200, 255, 0.24) 0 1px, transparent 2px);
+  background-size: 340px 300px;
+  animation: dustFloatReverse 24s linear infinite;
+}
+
+.ambient-particles.off::before,
+.ambient-particles.off::after {
+  opacity: 0;
+  animation-play-state: paused;
+}
+
+.app .ambient-particles.off,
+.app:not(.theme-dark) .ambient-particles.off,
+.app.theme-dark .ambient-particles.off {
+  filter: none;
+}
+
+.app .ambient-particles.off::before,
+.app .ambient-particles.off::after,
+.app:not(.theme-dark) .ambient-particles.off::before,
+.app:not(.theme-dark) .ambient-particles.off::after,
+.app.theme-dark .ambient-particles.off::before,
+.app.theme-dark .ambient-particles.off::after {
+  opacity: 0 !important;
+  animation-play-state: paused;
+}
+
+.app:not(.theme-dark) .ambient-particles {
+  mix-blend-mode: normal;
+  filter: contrast(1.28);
+}
+
+.app:not(.theme-dark) .ambient-particles::before {
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(0, 0, 0, 0.42) 0 1.4px, transparent 2.7px),
+    radial-gradient(circle at 30% 72%, rgba(0, 0, 0, 0.34) 0 1.4px, transparent 2.7px),
+    radial-gradient(circle at 67% 22%, rgba(0, 0, 0, 0.38) 0 1.4px, transparent 2.7px),
+    radial-gradient(circle at 82% 58%, rgba(0, 0, 0, 0.3) 0 1.4px, transparent 2.7px);
+  opacity: 0.82;
+}
+
+.app:not(.theme-dark) .ambient-particles::after {
+  background-image:
+    radial-gradient(circle at 20% 28%, rgba(0, 0, 0, 0.28) 0 1.2px, transparent 2.5px),
+    radial-gradient(circle at 47% 62%, rgba(0, 0, 0, 0.24) 0 1.2px, transparent 2.5px),
+    radial-gradient(circle at 78% 36%, rgba(0, 0, 0, 0.26) 0 1.2px, transparent 2.5px),
+    radial-gradient(circle at 90% 84%, rgba(0, 0, 0, 0.22) 0 1.2px, transparent 2.5px);
+  opacity: 0.68;
+}
+
+.app.theme-dark .ambient-particles {
+  mix-blend-mode: screen;
 }
 
 .page-sections {
@@ -183,6 +294,44 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
   box-shadow: 0 4px 12px rgba(30, 41, 59, 0.08);
   animation: textFadeIn 0.45s ease both;
+}
+
+.effects-switch {
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(250, 251, 255, 0.62);
+  backdrop-filter: saturate(165%) blur(12px);
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  box-shadow: 0 4px 12px rgba(30, 41, 59, 0.08);
+  animation: textFadeIn 0.45s ease both;
+}
+
+.effects-switch.active {
+  border-color: rgba(255, 189, 46, 0.58);
+  background: rgba(255, 214, 128, 0.24);
+  box-shadow: 0 6px 16px rgba(255, 189, 46, 0.2);
+}
+
+.effects-switch.inactive {
+  opacity: 0.72;
+  filter: grayscale(0.4);
+}
+
+.effects-switch:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 16px rgba(30, 41, 59, 0.12);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.effects-switch-icon {
+  font-size: 13px;
+  line-height: 1;
 }
 
 .theme-switch:hover {
@@ -784,6 +933,22 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.9s ease, color 0.9s ease, border-color 0.9s ease;
 }
 
+.app.theme-dark .effects-switch {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+  color: #f2f5f8;
+}
+
+.app.theme-dark .effects-switch.active {
+  border-color: rgba(255, 204, 112, 0.5);
+  background: rgba(255, 204, 112, 0.2);
+  box-shadow: 0 6px 16px rgba(255, 204, 112, 0.16);
+}
+
+.app.theme-dark .effects-switch:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
 .app.theme-dark .theme-switch:hover {
   background: rgba(255, 255, 255, 0.14);
 }
@@ -902,12 +1067,12 @@
   .header-right {
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr auto auto;
     gap: 10px 10px;
     align-items: center;
     grid-template-areas:
-      "nav nav"
-      "lang theme";
+      "nav nav nav"
+      "lang fx theme";
   }
 
   .nav {
@@ -928,6 +1093,13 @@
   .language-switch {
     grid-area: lang;
     justify-self: start;
+  }
+
+  .effects-switch {
+    width: 28px;
+    height: 28px;
+    grid-area: fx;
+    justify-self: end;
   }
 
   .theme-switch {
@@ -1100,11 +1272,11 @@
   }
 
   .header-right {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr auto auto;
     gap: 8px 8px;
     grid-template-areas:
-      "nav nav"
-      "lang theme";
+      "nav nav nav"
+      "lang fx theme";
   }
 
   .nav {
@@ -1123,6 +1295,13 @@
   .language-switch {
     grid-area: lang;
     justify-self: start;
+  }
+
+  .effects-switch {
+    width: 26px;
+    height: 26px;
+    grid-area: fx;
+    justify-self: end;
   }
 
   .theme-switch {

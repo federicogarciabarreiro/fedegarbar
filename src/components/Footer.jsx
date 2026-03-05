@@ -42,6 +42,7 @@ function Footer({ text, language = 'es' }) {
         className={`footer-copy-btn ${copyState === 'copied' ? 'copied' : ''} ${copyState === 'error' ? 'error' : ''}`}
         onClick={handleCopyEmail}
         aria-live="polite"
+        data-sound="copy"
       >
         <span className="footer-copy-icon" aria-hidden="true">✉</span>
         <span className="footer-copy-text">{text}</span>

@@ -1,4 +1,4 @@
-function Header({ data, language, onLanguageChange, theme, onThemeToggle }) {
+function Header({ data, language, onLanguageChange, theme, onThemeToggle, effectsEnabled, onEffectsToggle }) {
   return (
     <header className="header">
       <div className="header-content">
@@ -23,6 +23,7 @@ function Header({ data, language, onLanguageChange, theme, onThemeToggle }) {
               target="_blank"
               rel="noopener noreferrer"
               className="action-link"
+              data-sound="link"
             >
               <span className="action-icon" aria-hidden="true">in</span>
               <span>LinkedIn</span>
@@ -31,6 +32,7 @@ function Header({ data, language, onLanguageChange, theme, onThemeToggle }) {
               href={data.cv_download}
               download
               className="action-link"
+              data-sound="link"
             >
               <span className="action-icon" aria-hidden="true">⇩</span>
               <span>CV</span>
@@ -51,6 +53,17 @@ function Header({ data, language, onLanguageChange, theme, onThemeToggle }) {
               EN
             </button>
           </div>
+
+          <button
+            className={`effects-switch ${effectsEnabled ? 'active' : 'inactive'}`}
+            onClick={onEffectsToggle}
+            aria-label={effectsEnabled ? 'Disable visual effects' : 'Enable visual effects'}
+            title={effectsEnabled ? 'Disable effects' : 'Enable effects'}
+          >
+            <span className="effects-switch-icon" aria-hidden="true">
+              ✨
+            </span>
+          </button>
 
           <button
             className="theme-switch"
