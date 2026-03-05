@@ -1,8 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ProjectItem from './ProjectItem';
 
 function ProjectGallery({ projects, language }) {
   const [expandedIndex, setExpandedIndex] = useState(null);
+
+  useEffect(() => {
+    setExpandedIndex(null);
+  }, [language]);
 
   const handleItemClick = (index) => {
     setExpandedIndex(expandedIndex === index ? null : index);

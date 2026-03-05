@@ -1,4 +1,4 @@
-function Header({ data, language, onLanguageChange }) {
+function Header({ data, language, onLanguageChange, theme, onThemeToggle }) {
   return (
     <header className="header">
       <div className="header-content">
@@ -11,11 +11,22 @@ function Header({ data, language, onLanguageChange }) {
 
         <div className="header-right">
           <nav className="nav">
-            <a href={data.links.linkedin} target="_blank" rel="noopener noreferrer">
-              LinkedIn
+            <a
+              href={data.links.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="action-link"
+            >
+              <span className="action-icon" aria-hidden="true">in</span>
+              <span>LinkedIn</span>
             </a>
-            <a href={data.cv_download} download>
-              CV
+            <a
+              href={data.cv_download}
+              download
+              className="action-link"
+            >
+              <span className="action-icon" aria-hidden="true">⇩</span>
+              <span>CV</span>
             </a>
           </nav>
 
@@ -33,6 +44,17 @@ function Header({ data, language, onLanguageChange }) {
               EN
             </button>
           </div>
+
+          <button
+            className="theme-switch"
+            onClick={onThemeToggle}
+            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+            title={theme === 'dark' ? 'Light mode' : 'Dark mode'}
+          >
+            <span className="theme-switch-icon" aria-hidden="true">
+              {theme === 'dark' ? '☀' : '☾'}
+            </span>
+          </button>
         </div>
       </div>
     </header>

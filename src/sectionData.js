@@ -3,6 +3,7 @@ export const sectionsData = [
     title: 'Simuladores Interactivos',
     title_en: 'Interactive Simulators',
     image: 'https://unity.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Ffuvbjjlp%2Fproduction%2F819da2a6f121a111f7ff055e5cf593a000cd03a6-1920x1080.png&w=3840&q=100', // Unity factory simulator
+    // video: 'https://.../demo.mp4', // opcional: se muestra al expandir la sección
     content: [
       'Desarrollo y mantenimiento de más de 300 simuladores interactivos utilizados por más de 1000 alumnos simultáneos.',
       'Diseño de arquitectura modular en C# aplicando principios SOLID y patrones de diseño.'
@@ -58,7 +59,7 @@ export const sectionsData = [
   {
     title: 'Herramientas Internas',
     title_en: 'Internal Tools',
-    image: 'https://retool.com/vc-ap-126ac9/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fbclf52sw%2Fproduction%2F31554f30ada9cfa3a8d65fed0015d27f39ecc2da-1400x809.webp%3Fw%3D1920%26q%3D80%26fit%3Dmax%26auto%3Dformat&w=3840&q=75', // Dashboard example
+    image: 'https://retool.com/vc-ap-126ac9/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fbclf52sw%2Fproduction%2F31554f30ada9cfa3a8d65fed0015d27f39ecc2da-1400x809.webp%3Fw%3D1920%26q%3D80%26fit%3Dmax%26auto%3Dformat&w=3840&q=75',
     content: [
       'Desarrollo de herramientas internas y backoffice para análisis de datos educativos.',
       'Control de versiones mediante Git y Plastic SCM.'
@@ -71,7 +72,7 @@ export const sectionsData = [
   {
     title: 'Proyectos Destacados',
     title_en: 'Highlighted Projects',
-    image: 'https://miro.medium.com/1*Tlq8iZ4-jp0NB13fuNIMNg.png', // Unity indie game
+    image: 'https://miro.medium.com/1*Tlq8iZ4-jp0NB13fuNIMNg.png',
     content: [
       'Sistema compuesto por múltiples simuladores interactivos con backend propio para análisis de actividad de estudiantes.',
       'Sistema de integración de APIs para chat, traducción y transcripción en aplicaciones desarrolladas con Unity.',
