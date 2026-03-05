@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-function Footer({ text, language = 'es' }) {
+function Footer({ text, language = 'es', isLanguageFading = false }) {
   const [copyState, setCopyState] = useState('idle');
   const resetTimerRef = useRef(null);
 
@@ -45,8 +45,8 @@ function Footer({ text, language = 'es' }) {
         data-sound="copy"
       >
         <span className="footer-copy-icon" aria-hidden="true">✉</span>
-        <span className="footer-copy-text">{text}</span>
-        <span className="footer-copy-state">{labels[copyState]}</span>
+        <span className={`footer-copy-text lang-text ${isLanguageFading ? 'fading' : ''}`}>{text}</span>
+        <span className={`footer-copy-state lang-text ${isLanguageFading ? 'fading' : ''}`}>{labels[copyState]}</span>
       </button>
     </footer>
   );

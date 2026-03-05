@@ -122,16 +122,71 @@ export const sectionsData = [
   }
 ];
 
+export const siteConfig = {
+  page: {
+    title: 'Federico García Barreiro | Unity Technical Developer',
+    description: 'Portfolio de Federico García Barreiro: simuladores, XR, backend y optimización en Unity.',
+    favicon: '/logo192.png',
+    appleTouchIcon: '/logo192.png',
+    themeColorLight: '#eceef3',
+    themeColorDark: '#14181d'
+  },
+  language: {
+    default: 'es',
+    fadeOutMs: 240,
+    fadeTotalMs: 520
+  }
+};
+
+export const uiSoundMap = {
+  day: '/sounds/theme/day.mp3',
+  night: '/sounds/theme/night.mp3',
+  language: '/sounds/ui/language.mp3',
+  copy: '/sounds/ui/copy.mp3',
+  effects_on: '/sounds/effects/effects-on.mp3',
+  effects_off: '/sounds/effects/effects-off.mp3',
+  section_open: '/sounds/ui/section-open.mp3',
+  section_close: '/sounds/ui/section-close.mp3',
+  arrow_next: '/sounds/ui/arrow-next.mp3',
+  arrow_prev: '/sounds/ui/arrow-prev.mp3',
+  link: '/sounds/ui/link.mp3',
+  button: '/sounds/ui/button.mp3'
+};
+
 export const headerData = {
   name: 'Federico García Barreiro',
   title_es: 'Unity Technical Developer | Simulation Systems | C# | XR | Backend Integration | Performance Optimization',
   title_en: 'Unity Technical Developer | Simulation Systems | C# | XR | Backend Integration | Performance Optimization',
+  profile_photo: '/assets/images/profile/avatar.jpg',
   contact: 'federicogarciabarreiro@gmail.com | +34 667 56 30 26 | Murcia, España',
   links: {
     linkedin: 'https://linkedin.com/in/fedegarbar',
     github: 'https://github.com/fedegarbar',
     itch: 'https://fedeegb.itch.io'
   },
+  actions: [
+    {
+      id: 'linkedin',
+      label: 'LinkedIn',
+      icon: 'in',
+      href: 'https://linkedin.com/in/fedegarbar',
+      target: '_blank'
+    },
+    {
+      id: 'github',
+      label: 'GitHub',
+      icon: '⌥',
+      href: 'https://github.com/fedegarbar',
+      target: '_blank'
+    },
+    {
+      id: 'cv',
+      label: 'CV',
+      icon: '⇩',
+      href: '/assets/cv/Fede_UnityTechnicalDeveloper.pdf',
+      download: true
+    }
+  ],
   cv_download: '/assets/cv/Fede_UnityTechnicalDeveloper.pdf'
 };
 

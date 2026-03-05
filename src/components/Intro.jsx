@@ -1,7 +1,7 @@
-function Intro({ text }) {
+function Intro({ text, isLanguageFading = false }) {
   return (
     <section className="intro">
-      <p>{text}</p>
+      <p className={`lang-text ${isLanguageFading ? 'fading' : ''}`}>{text}</p>
     </section>
   );
 }

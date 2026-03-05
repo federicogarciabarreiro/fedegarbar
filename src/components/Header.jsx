@@ -1,8 +1,28 @@
-function Header({ data, language, onLanguageChange, theme, onThemeToggle, effectsEnabled, onEffectsToggle }) {
+import { useState } from 'react';
+
+function Header({ data, language, isLanguageFading = false, onLanguageChange, theme, onThemeToggle, effectsEnabled, onEffectsToggle }) {
+  const [profileOrbSrc, setProfileOrbSrc] = useState(data.profile_photo || '/logo512.png');
+
+  const handleOrbError = () => {
+    if (profileOrbSrc !== '/logo512.png') {
+      setProfileOrbSrc('/logo512.png');
+    }
+  };
+
   return (
     <header className="header">
       <div className="header-content">
         <div className="header-left">
+          <div className="header-photo-orb" aria-hidden="true">
+            <span className="header-photo-orb-ring" />
+            <img
+              src={profileOrbSrc}
+              alt=""
+              className="header-photo-orb-image"
+              onError={handleOrbError}
+            />
+          </div>
+
           <div className="header-brand">
             <img
               src="/logo512.png"
@@ -11,42 +31,27 @@ function Header({ data, language, onLanguageChange, theme, onThemeToggle, effect
             />
             <h1>{data.name}</h1>
           </div>
-          <p className="header-subtitle">
+          <p className={`header-subtitle lang-text ${isLanguageFading ? 'fading' : ''}`}>
             {language === 'es' ? data.title_es : data.title_en}
           </p>
         </div>
 
         <div className="header-right">
           <nav className="nav">
-            <a
-              href={data.links.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="action-link"
-              data-sound="link"
-            >
-              <span className="action-icon" aria-hidden="true">in</span>
-              <span>LinkedIn</span>
-            </a>
-            <a
-              href={data.links.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="action-link"
-              data-sound="link"
-            >
-              <span className="action-icon" aria-hidden="true">⌥</span>
-              <span>GitHub</span>
-            </a>
-            <a
-              href={data.cv_download}
-              download
-              className="action-link"
-              data-sound="link"
-            >
-              <span className="action-icon" aria-hidden="true">⇩</span>
-              <span>CV</span>
-            </a>
+            {data.actions?.map((action) => (
+              <a
+                key={action.id}
+                href={action.href}
+                target={action.target || undefined}
+                rel={action.target === '_blank' ? 'noopener noreferrer' : undefined}
+                download={action.download ? true : undefined}
+                className="action-link"
+                data-sound="link"
+              >
+                <span className="action-icon" aria-hidden="true">{action.icon}</span>
+                <span>{action.label}</span>
+              </a>
+            ))}
           </nav>
 
           <div className="language-switch">

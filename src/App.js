@@ -1,37 +1,22 @@
 import './App.css';
 import { useEffect, useRef, useState } from 'react';
-import { sectionsData, headerData, introText, footerText } from './sectionData';
+import { sectionsData, headerData, introText, footerText, siteConfig, uiSoundMap } from './sectionData';
 
 import Header from './components/Header';
 import Intro from './components/Intro';
 import ProjectGallery from './components/ProjectGallery';
 import Footer from './components/Footer';
 
-const SOUND_FILES = {
-  day: '/sounds/theme/day.mp3',
-  night: '/sounds/theme/night.mp3',
-  language: '/sounds/ui/language.mp3',
-  copy: '/sounds/ui/copy.mp3',
-  effects_on: '/sounds/effects/effects-on.mp3',
-  effects_off: '/sounds/effects/effects-off.mp3',
-  section_open: '/sounds/ui/section-open.mp3',
-  section_close: '/sounds/ui/section-close.mp3',
-  arrow_next: '/sounds/ui/arrow-next.mp3',
-  arrow_prev: '/sounds/ui/arrow-prev.mp3',
-  link: '/sounds/ui/link.mp3',
-  button: '/sounds/ui/button.mp3'
-};
-
 function App() {
-  const [language, setLanguage] = useState('es');
+  const [language, setLanguage] = useState(siteConfig.language.default || 'es');
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light');
   const [effectsEnabled, setEffectsEnabled] = useState(() => {
     const stored = localStorage.getItem('effectsEnabled');
     return stored === null ? true : stored === 'true';
   });
   const [isLanguageFading, setIsLanguageFading] = useState(false);
-  const [sectionsRenderKey, setSectionsRenderKey] = useState(0);
   const fadeTimerRef = useRef(null);
+  const fadeEndTimerRef = useRef(null);
   const audioPoolRef = useRef(new Map());
 
   useEffect(() => {
@@ -43,9 +28,66 @@ function App() {
   }, [effectsEnabled]);
 
   useEffect(() => {
+    const { page } = siteConfig;
+
+    if (page.title) {
+      document.title = page.title;
+    }
+
+    if (page.description) {
+      let metaDescription = document.querySelector('meta[name="description"]');
+      if (!metaDescription) {
+        metaDescription = document.createElement('meta');
+        metaDescription.setAttribute('name', 'description');
+        document.head.appendChild(metaDescription);
+      }
+      metaDescription.setAttribute('content', page.description);
+    }
+
+    if (page.favicon) {
+      let faviconLink = document.querySelector('link[rel="icon"]');
+      if (!faviconLink) {
+        faviconLink = document.createElement('link');
+        faviconLink.setAttribute('rel', 'icon');
+        document.head.appendChild(faviconLink);
+      }
+      faviconLink.setAttribute('href', page.favicon);
+    }
+
+    if (page.appleTouchIcon) {
+      let appleTouchLink = document.querySelector('link[rel="apple-touch-icon"]');
+      if (!appleTouchLink) {
+        appleTouchLink = document.createElement('link');
+        appleTouchLink.setAttribute('rel', 'apple-touch-icon');
+        document.head.appendChild(appleTouchLink);
+      }
+      appleTouchLink.setAttribute('href', page.appleTouchIcon);
+    }
+  }, []);
+
+  useEffect(() => {
+    const themeColor = theme === 'dark'
+      ? (siteConfig.page.themeColorDark || '#14181d')
+      : (siteConfig.page.themeColorLight || '#eceef3');
+
+    let metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    if (!metaThemeColor) {
+      metaThemeColor = document.createElement('meta');
+      metaThemeColor.setAttribute('name', 'theme-color');
+      document.head.appendChild(metaThemeColor);
+    }
+
+    metaThemeColor.setAttribute('content', themeColor);
+  }, [theme]);
+
+  useEffect(() => {
     return () => {
       if (fadeTimerRef.current) {
         clearTimeout(fadeTimerRef.current);
+      }
+
+      if (fadeEndTimerRef.current) {
+        clearTimeout(fadeEndTimerRef.current);
       }
     };
   }, []);
@@ -58,11 +100,21 @@ function App() {
     playSound('language');
     setIsLanguageFading(true);
 
+    if (fadeTimerRef.current) {
+      clearTimeout(fadeTimerRef.current);
+    }
+
+    if (fadeEndTimerRef.current) {
+      clearTimeout(fadeEndTimerRef.current);
+    }
+
     fadeTimerRef.current = setTimeout(() => {
       setLanguage(nextLanguage);
-      setSectionsRenderKey((value) => value + 1);
+    }, siteConfig.language.fadeOutMs);
+
+    fadeEndTimerRef.current = setTimeout(() => {
       setIsLanguageFading(false);
-    }, 180);
+    }, siteConfig.language.fadeTotalMs);
   };
 
   const handleThemeToggle = () => {
@@ -82,7 +134,7 @@ function App() {
   };
 
   const playSound = (soundKey) => {
-    const source = SOUND_FILES[soundKey] || SOUND_FILES.button;
+    const source = uiSoundMap[soundKey] || uiSoundMap.button;
     let template = audioPoolRef.current.get(soundKey);
 
     if (!template) {
@@ -180,6 +232,7 @@ function App() {
       <Header 
         data={headerData} 
         language={language} 
+        isLanguageFading={isLanguageFading}
         onLanguageChange={handleLanguageChange}
         theme={theme}
         onThemeToggle={handleThemeToggle}
@@ -187,18 +240,16 @@ function App() {
         onEffectsToggle={handleEffectsToggle}
       />
 
-      <main
-        key={sectionsRenderKey}
-        className={`page-sections ${isLanguageFading ? 'language-fade' : ''}`}
-      >
-        <Intro text={introText[language]} />
+      <main className="page-sections">
+        <Intro text={introText[language]} isLanguageFading={isLanguageFading} />
 
         <ProjectGallery 
           projects={sectionsData} 
           language={language} 
+          isLanguageFading={isLanguageFading}
         />
 
-        <Footer text={footerText[language]} language={language} />
+        <Footer text={footerText[language]} language={language} isLanguageFading={isLanguageFading} />
       </main>
     </div>
   );

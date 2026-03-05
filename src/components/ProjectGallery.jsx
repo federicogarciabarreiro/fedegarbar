@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import ProjectItem from './ProjectItem';
 
-function ProjectGallery({ projects, language }) {
+function ProjectGallery({ projects, language, isLanguageFading = false }) {
   const [isMobile, setIsMobile] = useState(() => window.innerWidth <= 768);
   const [expandedIndex, setExpandedIndex] = useState(() => (window.innerWidth <= 768 ? 0 : null));
   const galleryRef = useRef(null);
@@ -17,7 +17,7 @@ function ProjectGallery({ projects, language }) {
 
   useEffect(() => {
     setExpandedIndex(isMobile ? 0 : null);
-  }, [language, isMobile]);
+  }, [isMobile]);
 
   useEffect(() => {
     if (!isMobile || expandedIndex !== null || !projects.length) {
@@ -107,9 +107,10 @@ function ProjectGallery({ projects, language }) {
         <section className="gallery mobile-single" ref={galleryRef}>
           {mobileProject && (
             <ProjectItem
-              key={`${activeIndex}-${language}`}
+              key={activeIndex}
               project={mobileProject}
               language={language}
+              isLanguageFading={isLanguageFading}
               isExpanded={true}
               onClick={() => {}}
             />
@@ -122,6 +123,7 @@ function ProjectGallery({ projects, language }) {
               key={index}
               project={project}
               language={language}
+              isLanguageFading={isLanguageFading}
               isExpanded={activeIndex === index}
               onClick={() => handleItemClick(index)}
             />
