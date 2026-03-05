@@ -29,6 +29,16 @@ function Header({ data, language, onLanguageChange, theme, onThemeToggle, effect
               <span>LinkedIn</span>
             </a>
             <a
+              href={data.links.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="action-link"
+              data-sound="link"
+            >
+              <span className="action-icon" aria-hidden="true">⌥</span>
+              <span>GitHub</span>
+            </a>
+            <a
               href={data.cv_download}
               download
               className="action-link"

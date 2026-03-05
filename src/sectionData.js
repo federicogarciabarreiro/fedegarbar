@@ -129,9 +129,10 @@ export const headerData = {
   contact: 'federicogarciabarreiro@gmail.com | +34 667 56 30 26 | Murcia, España',
   links: {
     linkedin: 'https://linkedin.com/in/fedegarbar',
+    github: 'https://github.com/fedegarbar',
     itch: 'https://fedeegb.itch.io'
   },
-  cv_download: '/Fede_UnityTechnicalDeveloper.pdf'
+  cv_download: '/assets/cv/Fede_UnityTechnicalDeveloper.pdf'
 };
 
 export const introText = {

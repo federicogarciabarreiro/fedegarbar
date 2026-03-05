@@ -22,8 +22,13 @@ function ProjectItem({ project, language, isExpanded, onClick }) {
     ? `https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=1&loop=1&playlist=${youtubeId}&modestbranding=1&rel=0`
     : null;
   const contentRef = useRef(null);
+  const videoRef = useRef(null);
   const [videoError, setVideoError] = useState(false);
   const [imageSource, setImageSource] = useState(project.image);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+  const [videoDuration, setVideoDuration] = useState(0);
+  const [videoCurrentTime, setVideoCurrentTime] = useState(0);
 
   useEffect(() => {
     if (isExpanded && contentRef.current) {
@@ -33,6 +38,13 @@ function ProjectItem({ project, language, isExpanded, onClick }) {
 
   useEffect(() => {
     setVideoError(false);
+  }, [project, language, isExpanded]);
+
+  useEffect(() => {
+    setIsVideoPlaying(false);
+    setIsMuted(true);
+    setVideoDuration(0);
+    setVideoCurrentTime(0);
   }, [project, language, isExpanded]);
 
   useEffect(() => {
@@ -49,6 +61,107 @@ function ProjectItem({ project, language, isExpanded, onClick }) {
     e.stopPropagation();
     onClick();
   };
+
+  const handleToggleVideoPlayback = (event) => {
+    event.stopPropagation();
+
+    const video = videoRef.current;
+    if (!video) {
+      return;
+    }
+
+    if (video.paused) {
+      const playPromise = video.play();
+      if (playPromise && typeof playPromise.catch === 'function') {
+        playPromise.catch(() => {});
+      }
+      return;
+    }
+
+    video.pause();
+  };
+
+  const handleFullscreen = (event) => {
+    event.stopPropagation();
+
+    const video = videoRef.current;
+    if (!video) {
+      return;
+    }
+
+    if (video.requestFullscreen) {
+      video.requestFullscreen().catch(() => {});
+      return;
+    }
+
+    if (video.webkitEnterFullscreen) {
+      video.webkitEnterFullscreen();
+    }
+  };
+
+  const handleVideoLoaded = () => {
+    const video = videoRef.current;
+    if (!video || !isExpanded) {
+      return;
+    }
+
+    setVideoDuration(Number.isFinite(video.duration) ? video.duration : 0);
+    setVideoCurrentTime(video.currentTime || 0);
+
+    const playPromise = video.play();
+    if (playPromise && typeof playPromise.catch === 'function') {
+      playPromise.catch(() => {
+        setIsVideoPlaying(false);
+      });
+    }
+  };
+
+  const handleTimeUpdate = () => {
+    const video = videoRef.current;
+    if (!video) {
+      return;
+    }
+
+    setVideoCurrentTime(video.currentTime || 0);
+  };
+
+  const handleMetadataLoaded = () => {
+    const video = videoRef.current;
+    if (!video) {
+      return;
+    }
+
+    setVideoDuration(Number.isFinite(video.duration) ? video.duration : 0);
+  };
+
+  const handleSeek = (event) => {
+    event.stopPropagation();
+
+    const video = videoRef.current;
+    if (!video || !videoDuration) {
+      return;
+    }
+
+    const nextTime = (Number(event.target.value) / 100) * videoDuration;
+    video.currentTime = nextTime;
+    setVideoCurrentTime(nextTime);
+  };
+
+  const handleToggleMute = (event) => {
+    event.stopPropagation();
+
+    const video = videoRef.current;
+    if (!video) {
+      return;
+    }
+
+    video.muted = !video.muted;
+    setIsMuted(video.muted);
+  };
+
+  const progressPercent = videoDuration > 0
+    ? Math.min(100, Math.max(0, (videoCurrentTime / videoDuration) * 100))
+    : 0;
 
   return (
     <div
@@ -73,17 +186,73 @@ function ProjectItem({ project, language, isExpanded, onClick }) {
               allowFullScreen
             />
           ) : (
-            <video
-              className="project-video"
-              src={videoSource}
-              poster={imageSource}
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              onError={() => setVideoError(true)}
-            />
+            <>
+              <video
+                ref={videoRef}
+                className="project-video"
+                src={videoSource}
+                poster={imageSource}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                onLoadedData={handleVideoLoaded}
+                onLoadedMetadata={handleMetadataLoaded}
+                onTimeUpdate={handleTimeUpdate}
+                onPlay={() => setIsVideoPlaying(true)}
+                onPause={() => setIsVideoPlaying(false)}
+                onError={() => {
+                  setVideoError(true);
+                  setIsVideoPlaying(false);
+                }}
+              />
+              <div className="video-controls-overlay">
+                <button
+                  type="button"
+                  className="video-control-button video-center-control"
+                  onClick={handleToggleVideoPlayback}
+                  aria-label={isVideoPlaying ? 'Pause video' : 'Play video'}
+                  title={isVideoPlaying ? 'Pause' : 'Play'}
+                >
+                  {isVideoPlaying ? '❚❚' : '▶'}
+                </button>
+
+                <button
+                  type="button"
+                  className="video-control-button video-fullscreen-control"
+                  onClick={handleFullscreen}
+                  aria-label="Fullscreen"
+                  title="Fullscreen"
+                >
+                  ⛶
+                </button>
+
+                <div className="video-bottom-controls">
+                  <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    step="0.1"
+                    value={progressPercent}
+                    onChange={handleSeek}
+                    onClick={(event) => event.stopPropagation()}
+                    className="video-progress"
+                    aria-label="Video progress"
+                  />
+
+                  <button
+                    type="button"
+                    className="video-control-button video-volume-control"
+                    onClick={handleToggleMute}
+                    aria-label={isMuted ? 'Unmute video' : 'Mute video'}
+                    title={isMuted ? 'Unmute' : 'Mute'}
+                  >
+                    {isMuted ? '🔇' : '🔊'}
+                  </button>
+                </div>
+              </div>
+            </>
           )
         ) : (
           <img
