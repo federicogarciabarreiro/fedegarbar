@@ -1,23 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import { sectionsData, headerData, introText, footerText } from './sectionData';
+
+import Header from './components/Header';
+import Intro from './components/Intro';
+import ProjectGallery from './components/ProjectGallery';
+import Footer from './components/Footer';
 
 function App() {
+  const [language, setLanguage] = useState('es');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Header 
+        data={headerData} 
+        language={language} 
+        onLanguageChange={setLanguage} 
+      />
+
+      <Intro text={introText[language]} />
+
+      <ProjectGallery 
+        projects={sectionsData} 
+        language={language} 
+      />
+
+      <Footer text={footerText[language]} />
     </div>
   );
 }
