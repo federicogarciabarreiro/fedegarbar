@@ -1,11 +1,12 @@
 import { useState } from 'react';
 
-function Header({ data, language, isLanguageFading = false, onLanguageChange, theme, onThemeToggle, effectsEnabled, onEffectsToggle }) {
-  const [profileOrbSrc, setProfileOrbSrc] = useState(data.profile_photo || '/logo512.png');
+function Header({ data, labels, language, isLanguageFading = false, onLanguageChange, theme, onThemeToggle, effectsEnabled, onEffectsToggle }) {
+  const profileFallback = data.profile_photo_fallback || data.logo?.src || '';
+  const [profileOrbSrc, setProfileOrbSrc] = useState(data.profile_photo || profileFallback);
 
   const handleOrbError = () => {
-    if (profileOrbSrc !== '/logo512.png') {
-      setProfileOrbSrc('/logo512.png');
+    if (profileOrbSrc !== profileFallback) {
+      setProfileOrbSrc(profileFallback);
     }
   };
 
@@ -25,8 +26,8 @@ function Header({ data, language, isLanguageFading = false, onLanguageChange, th
 
           <div className="header-brand">
             <img
-              src="/logo512.png"
-              alt="Site logo"
+              src={data.logo?.src || ''}
+              alt={language === 'es' ? data.logo?.alt_es : data.logo?.alt_en}
               className="header-logo"
             />
             <h1>{data.name}</h1>
@@ -59,21 +60,25 @@ function Header({ data, language, isLanguageFading = false, onLanguageChange, th
               onClick={() => onLanguageChange('es')}
               className={language === 'es' ? 'active' : ''}
             >
-              ES
+              {labels?.languageOptions?.es}
             </button>
             <button
               onClick={() => onLanguageChange('en')}
               className={language === 'en' ? 'active' : ''}
             >
-              EN
+              {labels?.languageOptions?.en}
             </button>
           </div>
 
           <button
             className={`effects-switch ${effectsEnabled ? 'active' : 'inactive'}`}
             onClick={onEffectsToggle}
-            aria-label={effectsEnabled ? 'Disable visual effects' : 'Enable visual effects'}
-            title={effectsEnabled ? 'Disable effects' : 'Enable effects'}
+            aria-label={effectsEnabled
+              ? (language === 'es' ? labels.effectsAriaOn.es : labels.effectsAriaOn.en)
+              : (language === 'es' ? labels.effectsAriaOff.es : labels.effectsAriaOff.en)}
+            title={effectsEnabled
+              ? (language === 'es' ? labels.effectsTitleOn.es : labels.effectsTitleOn.en)
+              : (language === 'es' ? labels.effectsTitleOff.es : labels.effectsTitleOff.en)}
           >
             <span className="effects-switch-icon" aria-hidden="true">
               ✨
@@ -83,8 +88,12 @@ function Header({ data, language, isLanguageFading = false, onLanguageChange, th
           <button
             className="theme-switch"
             onClick={onThemeToggle}
-            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-            title={theme === 'dark' ? 'Light mode' : 'Dark mode'}
+            aria-label={theme === 'dark'
+              ? (language === 'es' ? labels.themeAriaDark.es : labels.themeAriaDark.en)
+              : (language === 'es' ? labels.themeAriaLight.es : labels.themeAriaLight.en)}
+            title={theme === 'dark'
+              ? (language === 'es' ? labels.themeTitleDark.es : labels.themeTitleDark.en)
+              : (language === 'es' ? labels.themeTitleLight.es : labels.themeTitleLight.en)}
           >
             <span className="theme-switch-icon" aria-hidden="true">
               {theme === 'dark' ? '☀' : '☾'}

@@ -1,27 +1,31 @@
 import React from "react";
 
-export default function ArchitectureDiagram() {
+export default function ArchitectureDiagram({ language = 'es', labels }) {
+  const title = language === 'es' ? labels.title.es : labels.title.en;
+  const clients = language === 'es' ? labels.clients.es : labels.clients.en;
+  const backend = language === 'es' ? labels.backend.es : labels.backend.en;
+  const database = language === 'es' ? labels.database.es : labels.database.en;
+
   return (
     <div className="architecture">
-      <h2>Arquitectura del Sistema</h2>
+      <h2>{title}</h2>
 
       <div className="layer clients">
-        <Box title="React Web App" />
-        <Box title="Backoffice Admin" />
-        <Box title="E-commerce" />
-        <Box title="Unity WebGL Experience" />
+        {clients.map((clientTitle) => (
+          <Box key={clientTitle} title={clientTitle} />
+        ))}
       </div>
 
       <Arrow />
 
       <div className="layer backend">
-        <Box title="FastAPI Backend" highlight />
+        <Box title={backend} highlight />
       </div>
 
       <Arrow />
 
       <div className="layer database">
-        <Box title="Supabase / PostgreSQL" />
+        <Box title={database} />
       </div>
     </div>
   );

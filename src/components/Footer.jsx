@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-function Footer({ text, language = 'es', isLanguageFading = false, codeHref = '' }) {
+function Footer({ text, language = 'es', labels, isLanguageFading = false, codeHref = '' }) {
   const [copyState, setCopyState] = useState('idle');
   const resetTimerRef = useRef(null);
 
@@ -29,15 +29,15 @@ function Footer({ text, language = 'es', isLanguageFading = false, codeHref = ''
     }, 1800);
   };
 
-  const labels = {
-    idle: language === 'es' ? 'Copiar correo' : 'Copy email',
-    copied: language === 'es' ? 'Copiado' : 'Copied',
-    error: language === 'es' ? 'No se pudo copiar' : 'Could not copy'
+  const copyLabels = {
+    idle: language === 'es' ? labels.copyIdle.es : labels.copyIdle.en,
+    copied: language === 'es' ? labels.copySuccess.es : labels.copySuccess.en,
+    error: language === 'es' ? labels.copyError.es : labels.copyError.en
   };
 
   const codeLinkLabel = language === 'es'
-    ? 'Si te interesa, puedes ver el código de este portfolio en GitHub.'
-    : 'If you are interested, you can view this portfolio code on GitHub.';
+    ? labels.codeLink.es
+    : labels.codeLink.en;
 
   return (
     <footer className="footer">
@@ -50,7 +50,7 @@ function Footer({ text, language = 'es', isLanguageFading = false, codeHref = ''
       >
         <span className="footer-copy-icon" aria-hidden="true">✉</span>
         <span className={`footer-copy-text lang-text ${isLanguageFading ? 'fading' : ''}`}>{text}</span>
-        <span className={`footer-copy-state lang-text ${isLanguageFading ? 'fading' : ''}`}>{labels[copyState]}</span>
+        <span className={`footer-copy-state lang-text ${isLanguageFading ? 'fading' : ''}`}>{copyLabels[copyState]}</span>
       </button>
 
       {codeHref && (

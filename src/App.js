@@ -1,6 +1,6 @@
 import './App.css';
 import { useEffect, useRef, useState } from 'react';
-import { sectionsData, headerData, introText, footerText, siteConfig, uiSoundMap } from './sectionData';
+import { sectionsData, headerData, introText, footerText, siteConfig, uiSoundMap, uiText } from './customData';
 
 import Header from './components/Header';
 import Intro from './components/Intro';
@@ -64,6 +64,8 @@ function App() {
       appleTouchLink.setAttribute('href', page.appleTouchIcon);
     }
   }, []);
+
+  const githubAction = headerData.actions?.find((action) => action.id === 'github');
 
   useEffect(() => {
     const themeColor = theme === 'dark'
@@ -232,6 +234,7 @@ function App() {
       <Header 
         data={headerData} 
         language={language} 
+        labels={uiText.header}
         isLanguageFading={isLanguageFading}
         onLanguageChange={handleLanguageChange}
         theme={theme}
@@ -246,14 +249,19 @@ function App() {
         <ProjectGallery 
           projects={sectionsData} 
           language={language} 
+          labels={uiText.gallery}
+          projectLabels={uiText.projectItem}
+          architectureLabels={uiText.architectureDiagram}
+          architectureProjectId={siteConfig.specialSections.architectureDiagramId}
           isLanguageFading={isLanguageFading}
         />
 
         <Footer
           text={footerText[language]}
           language={language}
+          labels={uiText.footer}
           isLanguageFading={isLanguageFading}
-          codeHref={headerData.links.github}
+          codeHref={githubAction?.href || ''}
         />
       </main>
     </div>

@@ -11,7 +11,16 @@ const getYouTubeId = (url) => {
   return match ? match[1] : null;
 };
 
-function ProjectItem({ project, language, isExpanded, onClick, isLanguageFading = false }) {
+function ProjectItem({
+  project,
+  language,
+  labels,
+  architectureLabels,
+  architectureProjectId,
+  isExpanded,
+  onClick,
+  isLanguageFading = false
+}) {
   const title = language === 'es' ? project.title : project.title_en;
   const content = language === 'es' ? project.content : project.content_en;
   const preferredVideoSource =
@@ -237,8 +246,9 @@ function ProjectItem({ project, language, isExpanded, onClick, isLanguageFading 
   const progressPercent = videoDuration > 0
     ? Math.min(100, Math.max(0, (videoCurrentTime / videoDuration) * 100))
     : 0;
-  const loadingLabel = language === 'es' ? 'Cargando vídeo' : 'Loading video';
-  const shouldRenderArchitectureDiagram = project.id === 'fullstack-architecture';
+  const loadingLabel = language === 'es' ? labels.loadingVideo.es : labels.loadingVideo.en;
+  const closeLabel = language === 'es' ? labels.closeAria.es : labels.closeAria.en;
+  const shouldRenderArchitectureDiagram = project.id === architectureProjectId;
   const shouldRenderVideo = isExpanded && isVideoVisible && activeVideoSource && !videoError && !shouldRenderArchitectureDiagram;
   const isNativeVideo = Boolean(shouldRenderVideo && !youtubeEmbedUrl);
 
@@ -250,12 +260,12 @@ function ProjectItem({ project, language, isExpanded, onClick, isLanguageFading 
       <button
         className="close-button"
         onClick={handleClose}
-        aria-label="Close"
+        aria-label={closeLabel}
       />
 
       <div className="project-image-container">
         {shouldRenderArchitectureDiagram ? (
-          <ArchitectureDiagram />
+          <ArchitectureDiagram language={language} labels={architectureLabels} />
         ) : (
           <img
             src={imageSource}
@@ -321,8 +331,12 @@ function ProjectItem({ project, language, isExpanded, onClick, isLanguageFading 
                       type="button"
                       className="video-control-button video-center-control"
                       onClick={handleToggleVideoPlayback}
-                      aria-label={isVideoPlaying ? 'Pause video' : 'Play video'}
-                      title={isVideoPlaying ? 'Pause' : 'Play'}
+                      aria-label={isVideoPlaying
+                        ? (language === 'es' ? labels.pauseVideoAria.es : labels.pauseVideoAria.en)
+                        : (language === 'es' ? labels.playVideoAria.es : labels.playVideoAria.en)}
+                      title={isVideoPlaying
+                        ? (language === 'es' ? labels.pauseTitle.es : labels.pauseTitle.en)
+                        : (language === 'es' ? labels.playTitle.es : labels.playTitle.en)}
                     >
                       {isVideoPlaying ? '❚❚' : '▶'}
                     </button>
@@ -331,8 +345,8 @@ function ProjectItem({ project, language, isExpanded, onClick, isLanguageFading 
                       type="button"
                       className="video-control-button video-fullscreen-control"
                       onClick={handleFullscreen}
-                      aria-label="Fullscreen"
-                      title="Fullscreen"
+                      aria-label={language === 'es' ? labels.fullscreenAria.es : labels.fullscreenAria.en}
+                      title={language === 'es' ? labels.fullscreenTitle.es : labels.fullscreenTitle.en}
                     >
                       ⛶
                     </button>
@@ -347,15 +361,19 @@ function ProjectItem({ project, language, isExpanded, onClick, isLanguageFading 
                         onChange={handleSeek}
                         onClick={(event) => event.stopPropagation()}
                         className="video-progress"
-                        aria-label="Video progress"
+                        aria-label={language === 'es' ? labels.progressAria.es : labels.progressAria.en}
                       />
 
                       <button
                         type="button"
                         className="video-control-button video-volume-control"
                         onClick={handleToggleMute}
-                        aria-label={isMuted ? 'Unmute video' : 'Mute video'}
-                        title={isMuted ? 'Unmute' : 'Mute'}
+                        aria-label={isMuted
+                          ? (language === 'es' ? labels.unmuteAria.es : labels.unmuteAria.en)
+                          : (language === 'es' ? labels.muteAria.es : labels.muteAria.en)}
+                        title={isMuted
+                          ? (language === 'es' ? labels.unmuteTitle.es : labels.unmuteTitle.en)
+                          : (language === 'es' ? labels.muteTitle.es : labels.muteTitle.en)}
                       >
                         {isMuted ? '🔇' : '🔊'}
                       </button>

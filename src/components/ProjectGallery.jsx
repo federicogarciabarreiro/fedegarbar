@@ -1,7 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 import ProjectItem from './ProjectItem';
 
-function ProjectGallery({ projects, language, isLanguageFading = false }) {
+function ProjectGallery({
+  projects,
+  language,
+  labels,
+  projectLabels,
+  architectureLabels,
+  architectureProjectId,
+  isLanguageFading = false
+}) {
   const [isMobile, setIsMobile] = useState(() => window.innerWidth <= 768);
   const [expandedIndex, setExpandedIndex] = useState(() => (window.innerWidth <= 768 ? 0 : null));
   const galleryRef = useRef(null);
@@ -88,7 +96,7 @@ function ProjectGallery({ projects, language, isLanguageFading = false }) {
         <button
           className="gallery-arrow prev"
           onClick={() => scrollGalleryBy(-1)}
-          aria-label="Previous section"
+          aria-label={language === 'es' ? labels.prevSectionAria.es : labels.prevSectionAria.en}
           disabled={isPrevDisabled}
         >
           ‹
@@ -96,7 +104,7 @@ function ProjectGallery({ projects, language, isLanguageFading = false }) {
         <button
           className="gallery-arrow next"
           onClick={() => scrollGalleryBy(1)}
-          aria-label="Next section"
+          aria-label={language === 'es' ? labels.nextSectionAria.es : labels.nextSectionAria.en}
           disabled={isNextDisabled}
         >
           ›
@@ -110,6 +118,9 @@ function ProjectGallery({ projects, language, isLanguageFading = false }) {
               key={activeIndex}
               project={mobileProject}
               language={language}
+              labels={projectLabels}
+              architectureLabels={architectureLabels}
+              architectureProjectId={architectureProjectId}
               isLanguageFading={isLanguageFading}
               isExpanded={true}
               onClick={() => {}}
@@ -123,6 +134,9 @@ function ProjectGallery({ projects, language, isLanguageFading = false }) {
               key={index}
               project={project}
               language={language}
+              labels={projectLabels}
+              architectureLabels={architectureLabels}
+              architectureProjectId={architectureProjectId}
               isLanguageFading={isLanguageFading}
               isExpanded={activeIndex === index}
               onClick={() => handleItemClick(index)}
