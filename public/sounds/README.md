@@ -1,7 +1,3 @@
-# UI Sounds
-
-Coloca aquí tus audios definitivos (recomendado `.mp3`) con **estos nombres exactos**:
-
 ## Theme
 - `/sounds/theme/day.mp3`
 - `/sounds/theme/night.mp3`
@@ -19,9 +15,3 @@ Coloca aquí tus audios definitivos (recomendado `.mp3`) con **estos nombres exa
 - `/sounds/ui/arrow-prev.mp3`
 - `/sounds/ui/link.mp3`
 - `/sounds/ui/button.mp3`
-
-## Consejos rápidos
-- Duración ideal: 60–250 ms.
-- Nivel objetivo: -14 a -10 LUFS corto (o volumen moderado).
-- Evita colas largas para no ensuciar la UX.
-- Si no existe un archivo, el navegador no reproducirá sonido para esa acción.
