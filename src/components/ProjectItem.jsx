@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import ArchitectureDiagram from './ArchitectureDiagram';
 
 const getYouTubeId = (url) => {
   if (!url) {
@@ -237,12 +238,13 @@ function ProjectItem({ project, language, isExpanded, onClick, isLanguageFading 
     ? Math.min(100, Math.max(0, (videoCurrentTime / videoDuration) * 100))
     : 0;
   const loadingLabel = language === 'es' ? 'Cargando vídeo' : 'Loading video';
-  const shouldRenderVideo = isExpanded && isVideoVisible && activeVideoSource && !videoError;
+  const shouldRenderArchitectureDiagram = project.id === 'fullstack-architecture';
+  const shouldRenderVideo = isExpanded && isVideoVisible && activeVideoSource && !videoError && !shouldRenderArchitectureDiagram;
   const isNativeVideo = Boolean(shouldRenderVideo && !youtubeEmbedUrl);
 
   return (
     <div
-      className={`gallery-item ${isExpanded ? 'expanded' : ''}`}
+      className={`gallery-item ${isExpanded ? 'expanded' : ''} ${shouldRenderArchitectureDiagram ? 'has-architecture-diagram' : ''}`}
       onClick={!isExpanded ? onClick : undefined}
     >
       <button
@@ -252,13 +254,17 @@ function ProjectItem({ project, language, isExpanded, onClick, isLanguageFading 
       />
 
       <div className="project-image-container">
-        <img
-          src={imageSource}
-          alt={title}
-          className={`project-image media-layer media-image ${isVideoReady ? 'is-faded' : ''}`}
-          loading="lazy"
-          onError={handleImageError}
-        />
+        {shouldRenderArchitectureDiagram ? (
+          <ArchitectureDiagram />
+        ) : (
+          <img
+            src={imageSource}
+            alt={title}
+            className={`project-image media-layer media-image ${isVideoReady ? 'is-faded' : ''}`}
+            loading="lazy"
+            onError={handleImageError}
+          />
+        )}
 
         {shouldRenderVideo && (
           youtubeEmbedUrl ? (

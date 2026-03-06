@@ -249,7 +249,12 @@ function App() {
           isLanguageFading={isLanguageFading}
         />
 
-        <Footer text={footerText[language]} language={language} isLanguageFading={isLanguageFading} />
+        <Footer
+          text={footerText[language]}
+          language={language}
+          isLanguageFading={isLanguageFading}
+          codeHref={headerData.links.github}
+        />
       </main>
     </div>
   );
