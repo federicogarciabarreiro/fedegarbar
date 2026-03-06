@@ -6,28 +6,23 @@ export const sectionsData = [
     title: 'Arquitectura Fullstack y Backend',
     title_en: 'Fullstack Architecture & Backend',
     image: '/assets/images/projects/fullstack.svg',
-    video: '/assets/videos/projects/backend-architecture.mp4',
     content: [
-      'Arquitectura fullstack con FastAPI + Supabase (PostgreSQL, Auth, Realtime).',
+      'Arquitectura fullstack con FastAPI + Supabase (PostgreSQL, Auth, Realtime, RPCs).',
       'Servidor intermedio que centraliza la lógica para múltiples frontends: web, backoffice, e-commerce y Unity WebGL.',
-      'Backend escalable con APIs REST/RPC optimizadas.',
-      'Ver fragmentos en mi repositorio de GitHub: <a href="sectionLink:0" target="_blank">Ver fragmentos →</a>'
+      'Ver fragmentos en mi repositorio: <a href="sectionLink:0" target="_blank">Ver fragmentos →</a>'
     ],
     content_en: [
-      'Fullstack architecture with FastAPI + Supabase (PostgreSQL, Auth, Realtime).',
+      'Fullstack architecture with FastAPI + Supabase (PostgreSQL, Auth, Realtime, RPCs).',
       'Intermediate server centralizing business logic for multiple frontends: web, backoffice, e-commerce and Unity WebGL.',
-      'Scalable backend with optimized REST/RPC APIs.',
-      'View snippets in my GitHub repository: <a href="sectionLink:0" target="_blank">View snippets →</a>'
+      'View snippets in my repository: <a href="sectionLink:0" target="_blank">View snippets →</a>'
     ]
   },
   {
     id: 'web-platforms',
-    isBuilding: true,
     link: [],
     title: 'Plataformas Web y Frontends Conectados',
     title_en: 'Web Platforms & Connected Frontends',
     image: '/assets/images/projects/web.svg',
-    video: '/assets/videos/projects/web-platforms.mp4',
     content: [
       'Web App de usuario con autenticación, perfil, logros y e-commerce integrado.',
       'Backoffice administrativo para gestión de usuarios, productos y analíticas.',
@@ -48,7 +43,6 @@ export const sectionsData = [
   title: 'Unity WebGL y Experiencias 3D Conectadas',
   title_en: 'Unity WebGL & Connected 3D Experiences',
   image: '/assets/images/projects/webgl.svg',
-  video: '/assets/videos/projects/unity-webgl-demo.mp4',
   content: [
     'Framework base en Unity WebGL, adaptable y optimizado para múltiples dispositivos, con localización de idiomas, tipografías dinámicas, tamaños escalables y paleta de colores personalizada.',
     'Integración con backend FastAPI para autenticación, logros y progreso.',
@@ -67,7 +61,6 @@ export const sectionsData = [
   title: 'Experiencia en Simuladores Interactivos',
   title_en: 'Interactive Simulator Development',
   image: '/assets/images/projects/simulations.svg',
-  video: '/assets/videos/projects/simuladores-interactivos.mp4',
   content: [
   'Participación en el desarrollo y mantenimiento de una amplia colección de simuladores interactivos para formación profesional.',
   'Optimización de rendimiento y estabilidad en plataformas de simulación utilizadas por cientos de estudiantes.'
@@ -84,17 +77,18 @@ export const sectionsData = [
     title: 'Herramientas Educativas',
     title_en: 'Educational Tools',
     image: '/assets/images/projects/tools.svg',
-    video: '/assets/videos/projects/ai-education.mp4',
     content: [
-      'Participación en el desarrollo de herramientas educativas basadas en IA: generación de videos, subtítulos, traducción, transcripción y locución.',
-      'Prototipos de IA personalizados con LLUnity, integración de modelos locales y APIs externas, incluyendo simulación de control de esqueleto y rayos X.',
-      'Ver fragmentos en mi repositorio de GitHub: <a href="sectionLink:0" target="_blank">Ver fragmentos →</a>'
-    ],
-    content_en: [
-      'Participation in the development of AI-based educational tools: video generation, subtitles, translation, transcription, and voice-over.',
-      'Custom AI prototypes using LLUnity, local models and external APIs, including skeleton control and X-ray simulation.',
-      'View snippets in my GitHub repository: <a href="sectionLink:0" target="_blank">View snippets →</a>'
-    ]
+  'Participación en el desarrollo de proyectos educativos con microservicios de IA para generación de contenido y análisis de datos.',
+  'Participación en proyectos de IA en local utilizando LLMUnity y sistemas propios para integración completa y prototipado.',
+  'Participación en el desarrollo de herramientas experimentales de control de esqueleto e implementación de simulaciones de rayos X en entornos XR.',
+  'Ver ejemplos de código y prototipos en mi repositorio: <a href="sectionLink:0" target="_blank">Ver fragmentos →</a>'
+],
+content_en: [
+  'Participation in the development of educational projects incorporating AI microservices for content generation and data analysis.',
+  'Participation in local AI projects using LLMUnity and proprietary systems for full integration and prototyping.',
+  'Participation in the development of experimental tools for skeleton control and X-ray simulations in XR environments.',
+  'View code examples and prototypes in my repository: <a href="sectionLink:0" target="_blank">View snippets →</a>'
+]
   },
   {
     id: 'indie-games',
@@ -107,7 +101,6 @@ export const sectionsData = [
     title: 'Proyectos Indie',
     title_en: 'Indie Projects',
     image: '/assets/images/projects/indie.svg',
-    video: '/assets/videos/projects/indie-games.mp4',
     content: [
       'Proyectos propios de videojuegos indie y experimentales multiplataforma.',
       'Godot – Sediento (IndieSpainJam2023) <a href="sectionLink:0" target="_blank">Probar en itch.io →</a>',
@@ -128,7 +121,6 @@ export const sectionsData = [
     title: 'Formación y Hard Skills',
     title_en: 'Education & Hard Skills',
     image: '/assets/images/projects/skills.svg',
-    video: '/assets/videos/projects/formacion-hard-skills.mp4',
     content: [
       'Grado Superior DAW + DAM – Universae (2023-2024).',
       'Grado Superior en Animacion 3D – Universae (2022-2023).',
@@ -281,54 +273,6 @@ export const uiText = {
     closeAria: {
       es: 'Cerrar',
       en: 'Close'
-    },
-    loadingVideo: {
-      es: 'Cargando vídeo',
-      en: 'Loading video'
-    },
-    pauseVideoAria: {
-      es: 'Pausar vídeo',
-      en: 'Pause video'
-    },
-    playVideoAria: {
-      es: 'Reproducir vídeo',
-      en: 'Play video'
-    },
-    pauseTitle: {
-      es: 'Pausar',
-      en: 'Pause'
-    },
-    playTitle: {
-      es: 'Reproducir',
-      en: 'Play'
-    },
-    fullscreenAria: {
-      es: 'Pantalla completa',
-      en: 'Fullscreen'
-    },
-    fullscreenTitle: {
-      es: 'Pantalla completa',
-      en: 'Fullscreen'
-    },
-    progressAria: {
-      es: 'Progreso del vídeo',
-      en: 'Video progress'
-    },
-    unmuteAria: {
-      es: 'Activar sonido del vídeo',
-      en: 'Unmute video'
-    },
-    muteAria: {
-      es: 'Silenciar vídeo',
-      en: 'Mute video'
-    },
-    unmuteTitle: {
-      es: 'Activar sonido',
-      en: 'Unmute'
-    },
-    muteTitle: {
-      es: 'Silenciar',
-      en: 'Mute'
     },
     inBuildingAlertTitle: {
       es: 'En construcción',

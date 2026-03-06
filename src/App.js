@@ -183,15 +183,6 @@ function App() {
         return;
       }
 
-      if (target.closest('.video-control-button')) {
-        playSound('button');
-        return;
-      }
-
-      if (target.closest('.video-controls-overlay')) {
-        return;
-      }
-
       if (target.closest('.close-button')) {
         playSound('section_close');
         return;
