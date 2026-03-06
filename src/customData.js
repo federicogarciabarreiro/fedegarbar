@@ -1,6 +1,8 @@
 export const sectionsData = [
   {
     id: 'fullstack-architecture',
+    isBuilding: true,
+    link: ['https://github.com/federicogarciabarreiro/Snippet_Server'],
     title: 'Arquitectura Fullstack y Backend',
     title_en: 'Fullstack Architecture & Backend',
     image: '/assets/images/projects/fullstack.svg',
@@ -10,17 +12,19 @@ export const sectionsData = [
       'Arquitectura fullstack con FastAPI + Supabase (PostgreSQL, Auth, Realtime).',
       'Servidor intermedio que centraliza la lógica para múltiples frontends: web, backoffice, e-commerce y Unity WebGL.',
       'Backend escalable con APIs REST/RPC optimizadas.',
-      'Ver fragmentos en mi repositorio de GitHub: <a href="https://github.com/federicogarciabarreiro/Snippet_Server" target="_blank">Ver fragmentos →</a>'
+      'Ver fragmentos en mi repositorio de GitHub: <a href="sectionLink:0" target="_blank">Ver fragmentos →</a>'
     ],
     content_en: [
       'Fullstack architecture with FastAPI + Supabase (PostgreSQL, Auth, Realtime).',
       'Intermediate server centralizing business logic for multiple frontends: web, backoffice, e-commerce and Unity WebGL.',
       'Scalable backend with optimized REST/RPC APIs.',
-      'View snippets in my GitHub repository: <a href="https://github.com/federicogarciabarreiro/Snippet_Server" target="_blank">View snippets →</a>'
+      'View snippets in my GitHub repository: <a href="sectionLink:0" target="_blank">View snippets →</a>'
     ]
   },
   {
     id: 'web-platforms',
+    isBuilding: true,
+    link: [],
     title: 'Plataformas Web y Frontends Conectados',
     title_en: 'Web Platforms & Connected Frontends',
     image: '/assets/images/projects/web.svg',
@@ -30,17 +34,19 @@ export const sectionsData = [
       'Web App de usuario con autenticación, perfil, logros y e-commerce integrado.',
       'Backoffice administrativo para gestión de usuarios, productos y analíticas.',
       'Ambas plataformas conectadas al mismo backend y base de datos.',
-      '<a href="inBuilding" target="_blank">Web App → onrender.com</a> | <a href="inBuilding" target="_blank">Backoffice → onrender.com</a>'
+      '<a href="sectionLink:0" target="_blank">Web App → onrender.com</a> | <a href="sectionLink:1" target="_blank">Backoffice → onrender.com</a>'
     ],
     content_en: [
       'User web app with authentication, profile, achievements and integrated e-commerce.',
       'Administrative backoffice for managing users, products and analytics.',
       'Both platforms connected to the same backend and database.',
-      '<a href="inBuilding" target="_blank">Web App → onrender.com</a> | <a href="inBuilding" target="_blank">Backoffice → onrender.com</a>'
+      '<a href="sectionLink:0" target="_blank">Web App → onrender.com</a> | <a href="sectionLink:1" target="_blank">Backoffice → onrender.com</a>'
     ]
   },
 {
   id: 'unity-webgl-integration',
+  isBuilding: true,
+  link: ['https://fedeegb.itch.io/frameworkwebgl'],
   title: 'Unity WebGL y Experiencias 3D Conectadas',
   title_en: 'Unity WebGL & Connected 3D Experiences',
   image: '/assets/images/projects/webgl.svg',
@@ -49,16 +55,18 @@ export const sectionsData = [
   content: [
     'Framework base en Unity WebGL, adaptable y optimizado para múltiples dispositivos, con localización de idiomas, tipografías dinámicas, tamaños escalables y paleta de colores personalizada.',
     'Integración con backend FastAPI para autenticación, logros y progreso.',
-    '<a href="https://fedeegb.itch.io/frameworkwebgl" target="_blank">Probar el framework base WebGL en itch.io →</a>'
+    '<a href="sectionLink:0" target="_blank">Probar el framework base WebGL en itch.io →</a>'
   ],
   content_en: [
     'Unity WebGL base framework, adaptable and optimized for multiple devices, with language localization, dynamic fonts, scalable sizes, and custom color palette.',
     'FastAPI backend integration for authentication, achievement tracking and progress.',
-    '<a href="https://fedeegb.itch.io/frameworkwebgl" target="_blank">Try the WebGL base framework on itch.io →</a>'
+    '<a href="sectionLink:0" target="_blank">Try the WebGL base framework on itch.io →</a>'
   ]
 },
   {
     id: 'interactive-simulators',
+    isBuilding: false,
+    link: [],
     title: 'Simuladores Interactivos',
     title_en: 'Interactive Simulators',
     image: '/assets/images/projects/simulators.svg',
@@ -75,6 +83,8 @@ export const sectionsData = [
   },
   {
     id: 'ai-education-tools',
+    isBuilding: true,
+    link: ['https://github.com/federicogarciabarreiro/Snippet_Tools'],
     title: 'Herramientas Educativas',
     title_en: 'Educational Tools',
     image: '/assets/images/projects/tools.svg',
@@ -83,16 +93,22 @@ export const sectionsData = [
     content: [
       'Desarrollo de herramientas educativas basadas en IA: generación de videos, subtítulos, traducción, transcripción y locución.',
       'Prototipos de IA personalizados con LLUnity, integración de modelos locales y APIs externas, incluyendo simulación de control de esqueleto y rayos X.',
-      'Ver fragmentos en mi repositorio de GitHub: <a href="https://github.com/federicogarciabarreiro/Snippet_Tools" target="_blank">Ver fragmentos →</a>'
+      'Ver fragmentos en mi repositorio de GitHub: <a href="sectionLink:0" target="_blank">Ver fragmentos →</a>'
     ],
     content_en: [
       'Development of AI-based educational tools: video generation, subtitles, translation, transcription, and voice-over.',
       'Custom AI prototypes using LLUnity, local models and external APIs, including skeleton control and X-ray simulation.',
-      'View snippets in my GitHub repository: <a href="https://github.com/federicogarciabarreiro/Snippet_Tools" target="_blank">View snippets →</a>'
+      'View snippets in my GitHub repository: <a href="sectionLink:0" target="_blank">View snippets →</a>'
     ]
   },
   {
     id: 'indie-games',
+    isBuilding: false,
+    link: [
+      'https://fedeegb.itch.io/sediento',
+      'https://fedeegb.itch.io/sparkle',
+      'https://elbaronjack.itch.io/drilldiver'
+    ],
     title: 'Proyectos Indie',
     title_en: 'Indie Projects',
     image: '/assets/images/projects/indie.svg',
@@ -100,19 +116,21 @@ export const sectionsData = [
     video: '/assets/videos/projects/indie-games.mp4',
     content: [
       'Proyectos propios de videojuegos indie y experimentales multiplataforma.',
-      'Godot – Sediento (IndieSpainJam2023) <a href="https://fedeegb.itch.io/sediento" target="_blank">Probar en itch.io →</a>',
-      'Unity – Sparkle (TFG) <a href="https://fedeegb.itch.io/sparkle" target="_blank">Probar en itch.io →</a>',
-      'Unity – Drill Diver (MJAM24) <a href="https://elbaronjack.itch.io/drilldiver" target="_blank">Probar en itch.io →</a>'
+      'Godot – Sediento (IndieSpainJam2023) <a href="sectionLink:0" target="_blank">Probar en itch.io →</a>',
+      'Unity – Sparkle (TFG) <a href="sectionLink:1" target="_blank">Probar en itch.io →</a>',
+      'Unity – Drill Diver (MJAM24) <a href="sectionLink:2" target="_blank">Probar en itch.io →</a>'
     ],
     content_en: [
       'Personal indie and experimental cross-platform games.',
-      'Godot – Sediento (IndieSpainJam2023) <a href="https://fedeegb.itch.io/sediento" target="_blank">Try on itch.io →</a>',
-      'Unity – Sparkle (TFG) <a href="https://fedeegb.itch.io/sparkle" target="_blank">Try on itch.io →</a>',
-      'Unity – Drill Diver (MJAM24) <a href="https://elbaronjack.itch.io/drilldiver" target="_blank">Try on itch.io →</a>'
+      'Godot – Sediento (IndieSpainJam2023) <a href="sectionLink:0" target="_blank">Try on itch.io →</a>',
+      'Unity – Sparkle (TFG) <a href="sectionLink:1" target="_blank">Try on itch.io →</a>',
+      'Unity – Drill Diver (MJAM24) <a href="sectionLink:2" target="_blank">Try on itch.io →</a>'
     ]
   },
   {
     id: 'education-skills',
+    isBuilding: false,
+    link: [],
     title: 'Formación y Hard Skills',
     title_en: 'Education & Hard Skills',
     image: '/assets/images/projects/skills.svg',
@@ -318,6 +336,18 @@ export const uiText = {
     muteTitle: {
       es: 'Silenciar',
       en: 'Mute'
+    },
+    inBuildingAlertTitle: {
+      es: 'En construcción',
+      en: 'In building'
+    },
+    inBuildingAlertText: {
+      es: 'Este enlace estará disponible pronto.',
+      en: 'This link will be available soon.'
+    },
+    inBuildingAlertButton: {
+      es: 'Entendido',
+      en: 'Got it'
     }
   },
   footer: {

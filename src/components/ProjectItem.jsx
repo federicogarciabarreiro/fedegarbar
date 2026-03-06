@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
+import Swal from 'sweetalert2';
 import ArchitectureDiagram from './ArchitectureDiagram';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 const getYouTubeId = (url) => {
   if (!url) {
@@ -33,6 +35,9 @@ function ProjectItem({
     ? `https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=1&loop=1&playlist=${youtubeId}&modestbranding=1&rel=0`
     : null;
   const contentRef = useRef(null);
+  const projectLinks = Array.isArray(project.link)
+    ? project.link
+    : (project.link ? [project.link] : []);
   const videoRef = useRef(null);
   const videoDelayTimerRef = useRef(null);
   const [videoError, setVideoError] = useState(false);
@@ -243,6 +248,53 @@ function ProjectItem({
     setIsMuted(video.muted);
   };
 
+  const handleContentClick = (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) {
+      return;
+    }
+
+    const anchor = target.closest('a');
+    if (!anchor) {
+      return;
+    }
+
+    const rawHref = anchor.getAttribute('href') || '';
+    const href = rawHref.trim();
+    const isBuildingPlaceholder = /^inbuildings?$/i.test(href);
+    const sectionLinkMatch = href.match(/^sectionlink(?::(\d+))?$/i);
+    const isSectionLinkPlaceholder = Boolean(sectionLinkMatch);
+
+    if (!isBuildingPlaceholder && !isSectionLinkPlaceholder) {
+      return;
+    }
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    const requestedIndex = sectionLinkMatch && sectionLinkMatch[1]
+      ? Number(sectionLinkMatch[1])
+      : 0;
+    const safeIndex = Number.isInteger(requestedIndex) && requestedIndex >= 0 ? requestedIndex : 0;
+    const sectionLink = projectLinks[safeIndex];
+    const hasSectionLink = typeof sectionLink === 'string' && sectionLink.trim().length > 0;
+    const shouldOpenSectionLink = hasSectionLink && !project.isBuilding;
+
+    if (shouldOpenSectionLink) {
+      const targetMode = anchor.getAttribute('target') === '_blank' ? '_blank' : '_self';
+      window.open(sectionLink, targetMode, 'noopener,noreferrer');
+      return;
+    }
+
+    Swal.fire({
+      icon: 'info',
+      title: language === 'es' ? labels.inBuildingAlertTitle.es : labels.inBuildingAlertTitle.en,
+      text: language === 'es' ? labels.inBuildingAlertText.es : labels.inBuildingAlertText.en,
+      confirmButtonText: language === 'es' ? labels.inBuildingAlertButton.es : labels.inBuildingAlertButton.en,
+      confirmButtonColor: '#2b63d6'
+    });
+  };
+
   const progressPercent = videoDuration > 0
     ? Math.min(100, Math.max(0, (videoCurrentTime / videoDuration) * 100))
     : 0;
@@ -389,7 +441,7 @@ function ProjectItem({
         </div>
       </div>
 
-      <div className="content" ref={contentRef}>
+      <div className="content" ref={contentRef} onClick={handleContentClick}>
         <h2 className={`lang-text ${isLanguageFading ? 'fading' : ''}`}>{title}</h2>
         <ul>
           {content.map((item, i) => (
