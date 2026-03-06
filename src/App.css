@@ -1099,6 +1099,14 @@
   opacity: 0.68;
 }
 
+.footer-legal-note {
+  max-width: 760px;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #6b7280;
+  opacity: 0.92;
+}
+
 .app.theme-dark {
   color: #e7ecf2;
 }
@@ -1222,6 +1230,10 @@
 
 .app.theme-dark .footer-code-link {
   color: rgba(228, 233, 239, 0.82);
+}
+
+.app.theme-dark .footer-legal-note {
+  color: rgba(228, 233, 239, 0.68);
 }
 
 .app.theme-dark .footer-copy-state {
@@ -1545,6 +1557,11 @@
   .footer-copy-text {
     font-size: 11px;
   }
+
+  .footer-legal-note {
+    font-size: 10.5px;
+    max-width: 96%;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1728,6 +1745,11 @@
 
   .footer-copy-state {
     font-size: 10px;
+  }
+
+  .footer-legal-note {
+    font-size: 10px;
+    line-height: 1.35;
   }
 }
 

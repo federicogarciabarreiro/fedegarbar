@@ -73,12 +73,12 @@ export const sectionsData = [
   image_fallback: 'https://unity.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Ffuvbjjlp%2Fproduction%2F819da2a6f121a111f7ff055e5cf593a000cd03a6-1920x1080.png&w=3840&q=100',
   video: '/assets/videos/projects/simuladores-interactivos.mp4',
   content: [
-    'Participación en el desarrollo y mantenimiento de más de 300 simuladores interactivos utilizados en formación profesional.',
-    'Optimización de rendimiento y estabilidad de sistemas que soportan más de 1000 usuarios simultáneos.'
-  ],
+  'Participación en el desarrollo y mantenimiento de una amplia colección de simuladores interactivos para formación profesional.',
+  'Optimización de rendimiento y estabilidad en plataformas de simulación utilizadas por cientos de estudiantes.'
+],
   content_en: [
-    'Participation in the development and maintenance of more than 300 interactive simulators used in professional training.',
-    'Performance and stability optimization of systems supporting over 1000 simultaneous users.'
+    'Participation in the development and maintenance of a wide collection of interactive simulators for professional training.',
+    'Performance and stability optimization on simulation platforms used by hundreds of students.'
   ]
 },
   {
@@ -366,6 +366,10 @@ export const uiText = {
     codeLink: {
       es: 'Si te interesa, puedes ver el código de este portfolio en GitHub.',
       en: 'If you are interested, you can view this portfolio code on GitHub.'
+    },
+    legalNote: {
+      es: 'Algunos proyectos descritos corresponden a experiencias profesionales. Los ejemplos de código mostrados son implementaciones personales y no contienen propiedad intelectual de empresas.',
+      en: 'Some projects described correspond to professional experience. The code examples shown are personal implementations and do not contain proprietary company code.'
     }
   },
   architectureDiagram: {

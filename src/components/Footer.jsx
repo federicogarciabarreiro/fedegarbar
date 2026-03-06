@@ -39,6 +39,10 @@ function Footer({ text, language = 'es', labels, isLanguageFading = false, codeH
     ? labels.codeLink.es
     : labels.codeLink.en;
 
+  const legalNoteLabel = language === 'es'
+    ? labels.legalNote.es
+    : labels.legalNote.en;
+
   return (
     <footer className="footer">
       <button
@@ -64,6 +68,10 @@ function Footer({ text, language = 'es', labels, isLanguageFading = false, codeH
           {codeLinkLabel}
         </a>
       )}
+
+      <p className={`footer-legal-note lang-text ${isLanguageFading ? 'fading' : ''}`}>
+        {legalNoteLabel}
+      </p>
     </footer>
   );
 }
