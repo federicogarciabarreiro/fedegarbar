@@ -1,6 +1,6 @@
 import './App.css';
 import { useEffect, useRef, useState } from 'react';
-import { sectionsData, headerData, introText, footerText, siteConfig, uiSoundMap, uiText } from './customData';
+import { sectionsData, headerData, footerRef, introText, footerText, siteConfig, uiSoundMap, uiText } from './customData';
 
 import Header from './components/Header';
 import Intro from './components/Intro';
@@ -65,7 +65,7 @@ function App() {
     }
   }, []);
 
-  const githubAction = headerData.actions?.find((action) => action.id === 'github');
+  //const githubAction = headerData.actions?.find((action) => action.id === 'github');
 
   useEffect(() => {
     const themeColor = theme === 'dark'
@@ -261,7 +261,7 @@ function App() {
           language={language}
           labels={uiText.footer}
           isLanguageFading={isLanguageFading}
-          codeHref={githubAction?.href || ''}
+          codeHref={footerRef?.href || ''}
         />
       </main>
     </div>
