@@ -64,23 +64,23 @@ export const sectionsData = [
   ]
 },
   {
-    id: 'interactive-simulators',
-    isBuilding: false,
-    link: [],
-    title: 'Simuladores Interactivos',
-    title_en: 'Interactive Simulators',
-    image: '/assets/images/projects/simulations.svg',
-    image_fallback: 'https://unity.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Ffuvbjjlp%2Fproduction%2F819da2a6f121a111f7ff055e5cf593a000cd03a6-1920x1080.png&w=3840&q=100',
-    video: '/assets/videos/projects/simuladores-interactivos.mp4',
-    content: [
-      'Desarrollo y mantenimiento de más de 300 simuladores interactivos utilizados en formación profesional.',
-      'Optimización de rendimiento y estabilidad de sistemas que soportan más de 1000 usuarios simultáneos.'
-    ],
-    content_en: [
-      'Development and maintenance of more than 300 interactive simulators used in professional training.',
-      'Performance and stability optimization of systems supporting over 1000 simultaneous users.'
-    ]
-  },
+  id: 'interactive-simulators',
+  isBuilding: false,
+  link: [],
+  title: 'Experiencia en Simuladores Interactivos',
+  title_en: 'Interactive Simulator Development',
+  image: '/assets/images/projects/simulations.svg',
+  image_fallback: 'https://unity.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Ffuvbjjlp%2Fproduction%2F819da2a6f121a111f7ff055e5cf593a000cd03a6-1920x1080.png&w=3840&q=100',
+  video: '/assets/videos/projects/simuladores-interactivos.mp4',
+  content: [
+    'Participación en el desarrollo y mantenimiento de más de 300 simuladores interactivos utilizados en formación profesional.',
+    'Optimización de rendimiento y estabilidad de sistemas que soportan más de 1000 usuarios simultáneos.'
+  ],
+  content_en: [
+    'Participation in the development and maintenance of more than 300 interactive simulators used in professional training.',
+    'Performance and stability optimization of systems supporting over 1000 simultaneous users.'
+  ]
+},
   {
     id: 'ai-education-tools',
     isBuilding: true,
@@ -91,12 +91,12 @@ export const sectionsData = [
     image_fallback: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80',
     video: '/assets/videos/projects/ai-education.mp4',
     content: [
-      'Desarrollo de herramientas educativas basadas en IA: generación de videos, subtítulos, traducción, transcripción y locución.',
+      'Participación en el desarrollo de herramientas educativas basadas en IA: generación de videos, subtítulos, traducción, transcripción y locución.',
       'Prototipos de IA personalizados con LLUnity, integración de modelos locales y APIs externas, incluyendo simulación de control de esqueleto y rayos X.',
       'Ver fragmentos en mi repositorio de GitHub: <a href="sectionLink:0" target="_blank">Ver fragmentos →</a>'
     ],
     content_en: [
-      'Development of AI-based educational tools: video generation, subtitles, translation, transcription, and voice-over.',
+      'Participation in the development of AI-based educational tools: video generation, subtitles, translation, transcription, and voice-over.',
       'Custom AI prototypes using LLUnity, local models and external APIs, including skeleton control and X-ray simulation.',
       'View snippets in my GitHub repository: <a href="sectionLink:0" target="_blank">View snippets →</a>'
     ]
