@@ -6,7 +6,6 @@ export const sectionsData = [
     title: 'Arquitectura Fullstack y Backend',
     title_en: 'Fullstack Architecture & Backend',
     image: '/assets/images/projects/fullstack.svg',
-    image_fallback: 'https://images.unsplash.com/photo-1558494949-ef0d38d3f6b6?auto=format&fit=crop&q=80',
     video: '/assets/videos/projects/backend-architecture.mp4',
     content: [
       'Arquitectura fullstack con FastAPI + Supabase (PostgreSQL, Auth, Realtime).',
@@ -28,7 +27,6 @@ export const sectionsData = [
     title: 'Plataformas Web y Frontends Conectados',
     title_en: 'Web Platforms & Connected Frontends',
     image: '/assets/images/projects/web.svg',
-    image_fallback: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80',
     video: '/assets/videos/projects/web-platforms.mp4',
     content: [
       'Web App de usuario con autenticación, perfil, logros y e-commerce integrado.',
@@ -50,7 +48,6 @@ export const sectionsData = [
   title: 'Unity WebGL y Experiencias 3D Conectadas',
   title_en: 'Unity WebGL & Connected 3D Experiences',
   image: '/assets/images/projects/webgl.svg',
-  image_fallback: 'https://unity.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Ffuvbjjlp%2Fproduction%2F5d432db7d1383465211ee8c2442cc2eabb085b81-810x503.jpg&w=3840&q=75',
   video: '/assets/videos/projects/unity-webgl-demo.mp4',
   content: [
     'Framework base en Unity WebGL, adaptable y optimizado para múltiples dispositivos, con localización de idiomas, tipografías dinámicas, tamaños escalables y paleta de colores personalizada.',
@@ -70,7 +67,6 @@ export const sectionsData = [
   title: 'Experiencia en Simuladores Interactivos',
   title_en: 'Interactive Simulator Development',
   image: '/assets/images/projects/simulations.svg',
-  image_fallback: 'https://unity.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Ffuvbjjlp%2Fproduction%2F819da2a6f121a111f7ff055e5cf593a000cd03a6-1920x1080.png&w=3840&q=100',
   video: '/assets/videos/projects/simuladores-interactivos.mp4',
   content: [
   'Participación en el desarrollo y mantenimiento de una amplia colección de simuladores interactivos para formación profesional.',
@@ -88,7 +84,6 @@ export const sectionsData = [
     title: 'Herramientas Educativas',
     title_en: 'Educational Tools',
     image: '/assets/images/projects/tools.svg',
-    image_fallback: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80',
     video: '/assets/videos/projects/ai-education.mp4',
     content: [
       'Participación en el desarrollo de herramientas educativas basadas en IA: generación de videos, subtítulos, traducción, transcripción y locución.',
@@ -112,7 +107,6 @@ export const sectionsData = [
     title: 'Proyectos Indie',
     title_en: 'Indie Projects',
     image: '/assets/images/projects/indie.svg',
-    image_fallback: 'https://miro.medium.com/1*Tlq8iZ4-jp0NB13fuNIMNg.png',
     video: '/assets/videos/projects/indie-games.mp4',
     content: [
       'Proyectos propios de videojuegos indie y experimentales multiplataforma.',
@@ -134,7 +128,6 @@ export const sectionsData = [
     title: 'Formación y Hard Skills',
     title_en: 'Education & Hard Skills',
     image: '/assets/images/projects/skills.svg',
-    image_fallback: 'https://thumbs.dreamstime.com/b/hard-skills-education-concept-vector-flat-design-illustration-human-brain-profile-technical-business-management-285213553.jpg',
     video: '/assets/videos/projects/formacion-hard-skills.mp4',
     content: [
       'Grado Superior DAW + DAM – Universae (2023-2024).',

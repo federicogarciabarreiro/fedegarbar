@@ -9,7 +9,7 @@ import Footer from './components/Footer';
 
 function App() {
   const [language, setLanguage] = useState(siteConfig.language.default || 'es');
-  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light');
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark');
   const [effectsEnabled, setEffectsEnabled] = useState(() => {
     const stored = localStorage.getItem('effectsEnabled');
     return stored === null ? true : stored === 'true';

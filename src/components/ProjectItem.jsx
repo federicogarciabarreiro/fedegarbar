@@ -41,7 +41,6 @@ function ProjectItem({
   const videoRef = useRef(null);
   const videoDelayTimerRef = useRef(null);
   const [videoError, setVideoError] = useState(false);
-  const [imageSource, setImageSource] = useState(project.image);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const [videoDuration, setVideoDuration] = useState(0);
@@ -70,10 +69,6 @@ function ProjectItem({
     setVideoLoadPercent(0);
     setShowVideoLoad(false);
   }, [project, isExpanded]);
-
-  useEffect(() => {
-    setImageSource(project.image);
-  }, [project]);
 
   useEffect(() => {
     setActiveVideoSource((current) => {
@@ -107,12 +102,6 @@ function ProjectItem({
       }
     };
   }, [isExpanded, activeVideoSource]);
-
-  const handleImageError = () => {
-    if (project.image_fallback && imageSource !== project.image_fallback) {
-      setImageSource(project.image_fallback);
-    }
-  };
 
   const handleClose = (e) => {
     e.stopPropagation();
@@ -320,11 +309,10 @@ function ProjectItem({
           <ArchitectureDiagram language={language} labels={architectureLabels} />
         ) : (
           <img
-            src={imageSource}
+            src={project.image}
             alt={title}
             className={`project-image media-layer media-image ${isVideoReady ? 'is-faded' : ''}`}
             loading="lazy"
-            onError={handleImageError}
           />
         )}
 
@@ -345,7 +333,7 @@ function ProjectItem({
                 ref={videoRef}
                 className={`project-video media-layer media-video ${isVideoReady ? 'media-visible' : ''}`}
                 src={activeVideoSource}
-                poster={imageSource}
+                poster={project.image}
                 autoPlay
                 muted
                 loop
