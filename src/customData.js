@@ -69,7 +69,7 @@ export const sectionsData = [
     link: [],
     title: 'Simuladores Interactivos',
     title_en: 'Interactive Simulators',
-    image: '/assets/images/projects/simulators.svg',
+    image: '/assets/images/projects/simulations.svg',
     image_fallback: 'https://unity.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Ffuvbjjlp%2Fproduction%2F819da2a6f121a111f7ff055e5cf593a000cd03a6-1920x1080.png&w=3840&q=100',
     video: '/assets/videos/projects/simuladores-interactivos.mp4',
     content: [
@@ -140,13 +140,13 @@ export const sectionsData = [
       'Grado Superior DAW + DAM – Universae (2023-2024).',
       'Grado Superior en Animacion 3D – Universae (2022-2023).',
       'Diseñado de Videojuegos – Escuela Da Vinci (2015-2020).',
-      'Tecnologías: React, FastAPI, Supabase, PostgreSQL, Unity, C#, WebGL, XR, Git, SOLID, optimización de rendimiento.'
+      'Tecnologías: Unity, C#, WebGL, XR, React, FastAPI, Supabase, PostgreSQL, Git, SOLID, optimización de rendimiento.'
     ],
     content_en: [
       'Higher Degree DAW + DAM – Universae (2023-2024).',
       'Higher Degree in 3D Animation – Universae (2022-2023).',
       'Game Designer – Da Vinci School (2015-2020).',
-      'Technologies: React, FastAPI, Supabase, PostgreSQL, Unity, C#, WebGL, XR, Git, SOLID, performance optimization.'
+      'Technologies: Unity, C#, WebGL, XR, React, FastAPI, Supabase, PostgreSQL, Git, SOLID, performance optimization.'
     ]
   }
 ];
