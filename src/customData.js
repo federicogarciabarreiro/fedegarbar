@@ -1,20 +1,20 @@
 export const sectionsData = [
   {
     id: 'fullstack-architecture',
-    isBuilding: true,
-    link: ['https://github.com/federicogarciabarreiro/Snippet_Server'],
+    isBuilding: false,
+    link: ['https://github.com/federicogarciabarreiro/Snippet_Server', 'https://server-gyxt.onrender.com/login'],
     title: 'Arquitectura Fullstack y Backend',
     title_en: 'Fullstack Architecture & Backend',
     image: '/assets/images/projects/fullstack.svg',
     content: [
       'Arquitectura fullstack con FastAPI + Supabase (PostgreSQL, Auth, Realtime, RPCs).',
       'Servidor intermedio que centraliza la lógica para múltiples frontends: web, backoffice, e-commerce y Unity WebGL.',
-      'Ver fragmentos en mi repositorio: <a href="sectionLink:0" target="_blank">Ver fragmentos →</a>'
+      'Muestras: <a href="sectionLink:0" target="_blank">Snippet →</a> | <a href="sectionLink:1" target="_blank">Servidor (Requiere permisos) →</a>'
     ],
     content_en: [
       'Fullstack architecture with FastAPI + Supabase (PostgreSQL, Auth, Realtime, RPCs).',
       'Intermediate server centralizing business logic for multiple frontends: web, backoffice, e-commerce and Unity WebGL.',
-      'View snippets in my repository: <a href="sectionLink:0" target="_blank">View snippets →</a>'
+      'Snippets: <a href="sectionLink:0" target="_blank">Snippet →</a> | <a href="sectionLink:1" target="_blank">Server (Requires permissions) →</a>'
     ]
   },
   {
