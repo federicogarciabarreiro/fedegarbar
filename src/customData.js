@@ -73,7 +73,7 @@ export const sectionsData = [
 },
   {
     id: 'ai-education-tools',
-    isBuilding: true,
+    isBuilding: false,
     link: ['https://github.com/federicogarciabarreiro/Snippet_Tools'],
     title: 'Herramientas Educativas',
     title_en: 'Educational Tools',
