@@ -19,7 +19,7 @@ export const sectionsData = [
   },
   {
     id: 'web-platforms',
-    isBuilding: true,
+    isBuilding: false,
     link: ['https://backoffice-b8i7.onrender.com',
       'https://ecommerce-lj8o.onrender.com'],
     title: 'Plataformas Web y Frontends Conectados',
