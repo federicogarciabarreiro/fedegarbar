@@ -20,8 +20,7 @@ export const sectionsData = [
   {
     id: 'web-platforms',
     isBuilding: false,
-    link: ['https://backoffice-b8i7.onrender.com',
-      'https://ecommerce-lj8o.onrender.com'],
+    link: ['https://ecommerce-lj8o.onrender.com','https://backoffice-b8i7.onrender.com'],
     title: 'Plataformas Web y Frontends Conectados',
     title_en: 'Web Platforms & Connected Frontends',
     image: '/assets/images/projects/web.svg',
@@ -29,13 +28,13 @@ export const sectionsData = [
       'Web App de usuario con autenticación, perfil, logros y e-commerce integrado.',
       'Backoffice administrativo para gestión de usuarios, productos y analíticas.',
       'Ambas plataformas conectadas al mismo backend y base de datos.',
-      '<a href="sectionLink:0" target="_blank">Web App → onrender.com</a> | <a href="sectionLink:1" target="_blank">Backoffice → onrender.com</a>'
+      '<a href="sectionLink:0" target="_blank">Ecommerce → onrender.com</a> | <a href="sectionLink:1" target="_blank">Backoffice → onrender.com</a>'
     ],
     content_en: [
       'User web app with authentication, profile, achievements and integrated e-commerce.',
       'Administrative backoffice for managing users, products and analytics.',
       'Both platforms connected to the same backend and database.',
-      '<a href="sectionLink:0" target="_blank">Web App → onrender.com</a> | <a href="sectionLink:1" target="_blank">Backoffice → onrender.com</a>'
+      '<a href="sectionLink:0" target="_blank">Ecommerce → onrender.com</a> | <a href="sectionLink:1" target="_blank">Backoffice → onrender.com</a>'
     ]
   },
 {
